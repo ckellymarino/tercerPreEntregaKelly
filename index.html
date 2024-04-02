@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pintureria Aura</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
+
 <body>
-    
     <header class="header">
         <div class="container">
             <h1 class="rainbow-title"> Pintureria Aura </h1>
@@ -15,28 +17,22 @@
         </div>
     </header>
 
-    <div class="banner"> 
+    <seccion1 class="banner"> 
         <img src="./img/banner.jpg"> 
-    </div>
+    </seccion1>
 
     <main class="main">
         <section class="container">
-            <h2 class="titulo">Stock Inicial Pinturas</h2>
-            <div class="seccion1" id="seccion1">
-                <!-- Esto se rellena en JS -->
-            </div>
-        </section>
-        <section class="container">
             <h2 class="titulo">Pinturas recibidas esta semana</h2>
-            <div class="seccion2" id="seccion2">
+            <div class="pinturas" id="pinturas">
                 <!-- Esto se rellena en JS -->
             </div>
         </section>
-
+        
         <section class="container">
             <h2 class="titulo">Pinturas vendidas esta semana</h2>
             <div class="ventaPinturas">
-                <div id="sinVentas">
+                <div id="sin-ventas">
                     <h4>No vendiste nada esta semana. 🥺</h4>
                 </div>
                 <div class="pinturas-vendidas" id="pinturas-vendidas">
@@ -45,7 +41,6 @@
                 <div class="venta-total">
                     <h2>Total: <span id="venta-total">$0</span></h2>
                 </div>
-                <button id="vaciar">Vaciar carga</button>
             </div>
         </section>
     </main>
@@ -55,6 +50,6 @@
         </div>
     </footer>
     
-    <script src="js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>

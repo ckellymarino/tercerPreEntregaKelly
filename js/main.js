@@ -28,9 +28,8 @@ const pinturas = [
     }
 ];
 
-const seccion1 = document.querySelector("#seccion1");
-const seccion2 = document.querySelector("#seccion2");
-const sinVentas = document.querySelector("#Sin-Ventas");
+const contenedorDePinturas = document.querySelector("#pinturas");
+const sinVentas = document.querySelector("#sin-ventas");
 const pinturasVendidas = document.querySelector("#pinturas-vendidas");
 const ventaTotal = document.querySelector("#venta-total");
 
@@ -46,14 +45,6 @@ pinturas.forEach((pintura) => {
         <p>Cantidad en stock: ${pintura.stock}</p>
     `;
 
-    seccion1.append(div);
-    
-    div.append("seccion2");
-    div.innerHTML = `
-        <img class="pintura-img" src="${pintura.img}">
-        <h3>${pintura.titulo}</h3>
-    `;
-
     let button = document.createElement("button");
     button.classList.add("pintura-btn");
     button.innerText = "Unidades recibidas";
@@ -62,7 +53,7 @@ pinturas.forEach((pintura) => {
     });
 
     div.append(button);
-    seccion2.append(div);
+    contenedorDePinturas.append(div);
 })
 
 const actualizarStock = () => {
@@ -92,7 +83,7 @@ const actualizarStock = () => {
             })
 
             div.append(button);
-            carritoProductos.append(div);
+            pinturasVendidas.append(div);
 
         })
     }
@@ -100,12 +91,12 @@ const actualizarStock = () => {
     localStorage.setItem("Venta de Pinturas", JSON.stringify(ventaPinturas));
 }
 
-const agregarAlStock = (pinturas) => {
+const agregarAlStock = (pintura) => {
     if (pintura.stock > 0) {
         const itemEncontrado = ventaPinturas.find(item => item.id === pintura.id);
         if (itemEncontrado) {
             itemEncontrado.cantidad++;
-            pinturas.stock--;
+            pintura.stock--;
         } else {
             ventaPinturas.push( {...pintura, cantidad: 1} );
             pintura.stock--;
@@ -116,9 +107,9 @@ const agregarAlStock = (pinturas) => {
     }
 }
 
-const borrarDelStock = (pinturas) => {
-    const itemEncontrado = pinturas.find(item => item.id === pintura.id);
-    itemEncontrado.stock += pinturas.cantidad;
+const borrarDelStock = (pintura) => {
+    const itemEncontrado = pintura.find(item => item.id === pintura.id);
+    itemEncontrado.stock += pintura.cantidad;
 
     const prodIndex = ventaPinturas.findIndex(item => item.id === pintura.id);
     ventaPinturas.splice(prodIndex, 1);
